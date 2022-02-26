@@ -45,9 +45,11 @@ p_n = Function(Q)
 p_  = Function(Q)
 
 # Define expressions used in variational forms
+g = 0.0981
+
 U  = 0.5*(u_n + u)
 n  = FacetNormal(mesh)
-f  = Constant((0, 0, 0))
+f  = Constant((0, 0, -g))
 k  = Constant(dt)
 mu = Constant(mu)
 rho = Constant(rho)
@@ -89,8 +91,8 @@ A3 = assemble(a3)
 [bc.apply(A2) for bc in bcp]
 
 # VTK files for visualization
-file_u = File('my_navier_stokes/velocity.pvd')
-file_p = File('my_navier_stokes_cylinder/pressure.pvd')
+file_u = File('my_navier_stokes1/velocity.pvd')
+file_p = File('my_navier_stokes1/pressure.pvd')
 
 # Time-stepping
 t = 0
